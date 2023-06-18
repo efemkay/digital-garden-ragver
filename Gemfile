@@ -31,4 +31,3 @@ gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 gem 'jekyll-sitemap'
 gem 'kramdown-math-katex'
-gem 'jekyll-wikilinks', '~> 0.0.12'
