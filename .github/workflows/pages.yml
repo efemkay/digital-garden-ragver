@@ -1,14 +1,18 @@
-name: Deploy GitHub Pages
+name: Deploy to GitHub Pages
 on:
   push:
     branches:
       - master
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install and configure jekyll-wikilinks
-        uses: manunamz/jekyll-wikilinks-action@v1
-      - name: Build and deploy GitHub Pages
-        run: jekyll build && jekyll serve
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+      - name: Run jekyll-wikilinks
+        run: |
+          gem install jekyll-wikilinks
+          jekyll-wikilinks --source ./ --destination ./public
