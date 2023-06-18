@@ -1,0 +1,14 @@
+name: Deploy GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install and configure jekyll-wikilinks
+        uses: manunamz/jekyll-wikilinks-action@v1
+      - name: Build and deploy GitHub Pages
+        run: jekyll build && jekyll serve
